@@ -401,7 +401,7 @@ Since, the transmission efficiency is less than required efficiency , we increas
 \end{table}\\
 If the efficiency had not been greater than 94\% up to the very end of the table, we would have increased the number of bundles in the conductor and calculated the current and started the process again.\\[0.2cm]
 Hence, we select the \textbf{GOAT} conductor moving forward.
-\subsubsection{Voltage Regulation}
+\subsubsection{GMD and GMR calculation}
 We know, for GOAT conductor:
 \begin{itemize}
     \item Total sectional area(A)=399.98 $mm^2$
@@ -410,11 +410,50 @@ We know, for GOAT conductor:
 \end{itemize} 
 The value of inductance can be calculated with the following formula:
 \begin{equation}
-    Inductance(L)=2*10^{-7}*ln\left(\frac{GMD}{GMR}\right)
+    Inductance(L)=2*10^{-7}*ln\left(\frac{GMD}{GMR_L}\right)
 \end{equation}
 The value of capacitance can be calculated with the following formula: 
 \begin{equation}
-    Capacitance(C)=2*10^{-7}*\left(\frac{1}{ln\frac{GMD}{GMR}}\right)
+    Capacitance(C)=2*10^{-7}*\left(\frac{1}{ln\frac{GMD}{GMR_C}}\right)
 \end{equation}
 The calculation of GMD and GMR for a double circuit transmission line is as follows: 
+\begin{figure}[!hb]
+    \centering
+    \includegraphics[width=0.5\textwidth,angle=-270]{Figures/GMDD.pdf}
+    \caption{Three Phase Double Circuit Transmission Line}
+    \label{fig: Double circuit Transmission Line}
+\end{figure}\\
+The vertical separation(y) and the horizontal separation between conductors(c) of each of the phases has been already been calculated above as y=3.6535m and c=8.3133m.
+\[
+\begin{aligned}
+    D_{RY}=D_{YB}=D_{Y'R'}=D_{B'Y'}=y&=3.6535m\\
+    D_{RB'}=D_{YY'}=D_{BR'}=c&=8.3133m\\
+    D_{RR'}=D_{BB'}=\sqrt{(2y)^2+c^2}&=9.778m\\
+    D_{YR'}=D_{RY'}=D_{BY'}=D_{YB'}=\sqrt{y^2+c^2}&=9.080m\\
+    D_{RB}=D_{R'B'}=2y&=7.307m\\
+\end{aligned}
+\]
+\textbf{GMD Calculation}\\[0.2cm]
+The GMD of a three-phase double circuit line is given by: 
+\begin{equation}
+    GMD=\sqrt[3]{GMD_{RY}*GMD_{YB}*GMD_{BR}}
+\end{equation}
+where,
+\begin{align*}
+    GMD_{RY}=\sqrt[4]{D_{RY}*D_{RY'}*D_{R'Y}*D_{R'Y'}}&=5.7596m\\
+    GMD_{YB}=\sqrt[4]{D_{YB}*D_{YB'}*D_{Y'B}*D_{Y'B'}}&=5.7596m\\[0.1cm]
+\end{align*}
+\begin{align*}
+        GMD_{BR}=\sqrt[4]{D_{BR}*D_{BR'}*D_{B'R}*D_{B'R'}}&=7.7939m\\
+\end{align*}
+From equation 23:
+\begin{align*}
+    GMD=\sqrt[3]{5.7596*5.7596*7.7939}=6.370m
+\end{align*}
+\textbf{GMR Calculation}\\[0.2cm]
+We know:
+\begin{align*} 
+    GMR_L&=r'=0.7788r=0.7788*0.012985m=0.0101m\\
+    GMR_C&=r=0.012985m\\
+\end{align*}
 \end{document}
