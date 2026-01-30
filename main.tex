@@ -313,7 +313,7 @@ According to the table, number of discs required=6.\\[0.2cm]
 Since the maximum number of insulators is 9 which will withstand all the overvoltage tests. Hence, the number of insulators required is 9.
 \newpage
 \section{Conductor Selection}
-\subsection{Conductor Selection}
+\subsection{Conductor Selection and Current Calculation}
 The line current is calculated as follows:
 \begin{align}
     \textit{Line Current(I)}&=\dfrac{P_{transfer}}{\sqrt{3}*cos\phi*V_{L-L}*N_c*N_b}
@@ -401,7 +401,20 @@ Since, the transmission efficiency is less than required efficiency , we increas
 \end{table}\\
 If the efficiency had not been greater than 94\% up to the very end of the table, we would have increased the number of bundles in the conductor and calculated the current and started the process again.\\[0.2cm]
 Hence, we select the \textbf{GOAT} conductor moving forward.
-
-   
-
+\subsubsection{Voltage Regulation}
+We know, for GOAT conductor:
+\begin{itemize}
+    \item Total sectional area(A)=399.98 $mm^2$
+    \item Overall diameter($d_c$)=25.97 mm
+    \item Overall radius(r)=12.985 mm
+\end{itemize} 
+The value of inductance can be calculated with the following formula:
+\begin{equation}
+    Inductance(L)=2*10^{-7}*ln\left(\frac{GMD}{GMR}\right)
+\end{equation}
+The value of capacitance can be calculated with the following formula: 
+\begin{equation}
+    Capacitance(C)=2*10^{-7}*\left(\frac{1}{ln\frac{GMD}{GMR}}\right)
+\end{equation}
+The calculation of GMD and GMR for a double circuit transmission line is as follows: 
 \end{document}
