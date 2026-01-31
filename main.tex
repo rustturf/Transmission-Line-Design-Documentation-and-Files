@@ -408,21 +408,13 @@ We know, for GOAT conductor:
     \item Overall diameter($d_c$)=25.97 mm
     \item Overall radius(r)=12.985 mm
 \end{itemize} 
-The value of inductance can be calculated with the following formula:
-\begin{equation}
-    Inductance(L)=2*10^{-7}*ln\left(\frac{GMD}{GMR_L}\right)
-\end{equation}
-The value of capacitance can be calculated with the following formula: 
-\begin{equation}
-    Capacitance(C)=2*10^{-7}*\left(\frac{1}{ln\frac{GMD}{GMR_C}}\right)
-\end{equation}
 The calculation of GMD and GMR for a double circuit transmission line is as follows: 
-\begin{figure}[!hb]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth,angle=-270]{Figures/GMDD.pdf}
+    \includegraphics[width=0.4\textwidth,angle=-270]{Figures/GMDD.pdf}
     \caption{Three Phase Double Circuit Transmission Line}
     \label{fig: Double circuit Transmission Line}
-\end{figure}\\
+\end{figure}
 The vertical separation(y) and the horizontal separation between conductors(c) of each of the phases has been already been calculated above as y=3.6535m and c=8.3133m.
 \[
 \begin{aligned}
@@ -437,6 +429,7 @@ The vertical separation(y) and the horizontal separation between conductors(c) o
 The GMD of a three-phase double circuit line is given by: 
 \begin{equation}
     GMD=\sqrt[3]{GMD_{RY}*GMD_{YB}*GMD_{BR}}
+    \label{equation:GMD}
 \end{equation}
 where,
 \begin{align*}
@@ -446,16 +439,18 @@ where,
 \begin{align*}
         GMD_{BR}=\sqrt[4]{D_{BR}*D_{BR'}*D_{B'R}*D_{B'R'}}&=7.7939m\\
 \end{align*}
-From equation 23:
+From equation \ref{equation:GMD}:
 \begin{align*}
     GMD=\sqrt[3]{5.7596*5.7596*7.7939}=6.370m
 \end{align*}
+\newpage
 \textbf{GMR Calculation}\\[0.2cm]
 We know:\\
     $\text{GMR of self conductor}(r')=0.7788r=0.7788*0.012985m=0.0101m$\\[0.2cm]
 The GMR in a three-phase double circuit line is given by: 
     \begin{equation}
         GMR_L=\sqrt[3]{GMR_{R_L}*GMR_{Y_L}*GMR_{B_L}}
+        \label{equation:GMRL}
     \end{equation}
 where,
 \begin{align*}
@@ -463,13 +458,14 @@ where,
     GMR_{Y_L}&=\sqrt[4]{D_{YY}*D_{YY'}*D_{Y'Y}*D_{Y'Y'}}=\sqrt[4]{r'*D_{YY'}*D_{Y'Y}*r'}=0.2897m\\
     GMR_{B_L}&=\sqrt[4]{D_{BB}*D_{BB'}*D_{B'B}*D_{B'B'}}=\sqrt[4]{r'*D_{BB'}*D_{B'B}*r'}=0.3142m
 \end{align*}
-Thus from equation 24:
+Thus from equation \ref{equation:GMRL}:
 \begin{align*}
     GMR_L=\sqrt[3]{0.3142*0.2897*0.3142}=0.3058m
 \end{align*}
 To calculate $GMR_C,\ r'=r=0.012985m$ and we repeat the same process again:
 \begin{equation}
     GMR_C=\sqrt[3]{GMR_{R_c}*GMR_{Y_c}*GMR_{B_c}}
+    \label{equation:GMRC}
 \end{equation}
 where,
 \begin{align*}
@@ -477,8 +473,24 @@ where,
     GMR_{Y_c}&=\sqrt[4]{D_{YY}*D_{YY'}*D_{Y'Y}*D_{Y'Y'}}=\sqrt[4]{r*D_{YY'}*D_{Y'Y}*r}=0.3285m\\
     GMR_{B_c}&=\sqrt[4]{D_{BB}*D_{BB'}*D_{B'B}*D_{B'B'}}=\sqrt[4]{r*D_{BB'}*D_{B'B}*r}=0.3563m
 \end{align*}
-Thus from equation 25:
+Thus from equation \ref{equation:GMRC}:
 \begin{align*}
     GMR_C=\sqrt[3]{0.3563*0.3285*0.3563}=0.3467m
+\end{align*}
+\subsubsection{Inductance And Capacitance Calculation}
+The value of inductance can be calculated with the following formula:
+\begin{equation}
+    Inductance(L)=2*10^{-7}*ln\left(\frac{GMD}{GMR_L}\right)
+    \label{L}
+\end{equation}
+The value of capacitance can be calculated with the following formula: 
+\begin{equation}
+    Capacitance(C)=2*10^{-7}*\left(\frac{1}{ln\frac{GMD}{GMR_C}}\right)
+    \label{C}
+\end{equation}
+From equation \ref{L} and \ref{C}:
+\begin{align*}
+    L&=2*10^{-7}*ln\left(\frac{6.370}{0.3058}\right)=6.072*10^{-7}H/phase\ m=6.072*10^{-4}H/phase\ Km\\
+    C&=2*10^{-7}*\left(\frac{1}{ln\frac{6.370}{0.3467}}\right)=6.870*10^{-8}F/phase\ m=6.870*10^{-5}F/phase \ km
 \end{align*}
 \end{document}
