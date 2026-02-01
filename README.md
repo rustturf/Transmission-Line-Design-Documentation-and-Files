@@ -24,23 +24,23 @@ The main objectives of this project are:
 ---
 
 ## Directory Structure
-├── autocaddrawing/
-│ ├── gmandtowerdrawing.dwg
-│ 
-├── figures/
-│ ├── variousfigures
-│ 
-├── matlab/
-│ └── conductorselection.m
-│
-├── excel/
-│ ├── british.xlsx
-│ └── results.xlsx
-│
-|---─ Design.tex
-│ └── Design.pdf
-│
-└── README.md
+├── autocaddrawing/<br>
+│ ├── gmandtowerdrawing.dwg<br>
+│ <br>
+├── figures/<br>
+│ ├── variousfigures<br>
+│ <br>
+├── matlab/<br>
+│ └── conductorselection.m<br>
+│<br>
+├── excel/<br>
+│ ├── british.xlsx<br>
+│ └── results.xlsx<br>
+│<br>
+|---─ Design.tex<br>
+│ └── Design.pdf<br>
+│<br>
+└── README.md<br>
 
 ## How to Use the Project
 
