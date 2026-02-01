@@ -1,4 +1,4 @@
-a = readtable('british.xlsx');
+a = readtable('matlabandexcelfiles/british.xlsx');
 length_line = input('Enter the length in KM');
 Power_transfer = input('Enter the power to be transferred');
 current = input("Enter the current");
