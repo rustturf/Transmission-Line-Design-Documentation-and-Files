@@ -259,6 +259,13 @@ For double earth wire,
     d&=\sqrt{3}\times c_l\\
     &=479.96 cm\notag
 \end{align}
+The figure of a three phase double circuit transmission tower is as shown below: 
+\begin{figure}[!hb]
+    \centering
+    \includegraphics[width=0.5\textwidth,height=0.9\textwidth]{Figures/transmissiontower.pdf}
+    \caption{Transmission Tower of a Three Phase Double Circuit Transmission Line}
+    \label{fig:Transmission Tower}
+\end{figure}
 \section{Number of Insulator Disc Selection}
 For a 132 KV disc insulators the disc taken is a $(254\times154)mm^2$. The following parameters are assumed before conducting the tests: 
 \[
@@ -311,7 +318,6 @@ According to the table, number of discs required=9.
 \end{align}
 According to the table, number of discs required=6.\\[0.2cm]
 Since the maximum number of insulators is 9 which will withstand all the overvoltage tests. Hence, the number of insulators required is 9.
-\newpage
 \section{Conductor Selection}
 \subsection{Conductor Selection and Current Calculation}
 The line current is calculated as follows:
@@ -409,12 +415,12 @@ We know, for GOAT conductor:
     \item Overall radius(r)=12.985 mm
 \end{itemize} 
 The calculation of GMD and GMR for a double circuit transmission line is as follows: 
-\begin{figure}[H]
+\begin{figure}[!hb]
     \centering
-    \includegraphics[width=0.4\textwidth,angle=-270]{Figures/GMDD.pdf}
+    \includegraphics[width=0.6\textwidth,angle=-270]{Figures/GMDD.pdf}
     \caption{Three Phase Double Circuit Transmission Line}
     \label{fig: Double circuit Transmission Line}
-\end{figure}
+\end{figure}\\
 The vertical separation(y) and the horizontal separation between conductors(c) of each of the phases has been already been calculated above as y=3.6535m and c=8.3133m.
 \[
 \begin{aligned}
@@ -443,7 +449,6 @@ From equation \ref{equation:GMD}:
 \begin{align*}
     GMD=\sqrt[3]{5.7596*5.7596*7.7939}=6.370m
 \end{align*}
-\newpage
 \textbf{GMR Calculation}\\[0.2cm]
 We know:\\
     $\text{GMR of self conductor}(r')=0.7788r=0.7788*0.012985m=0.0101m$\\[0.2cm]
@@ -485,12 +490,99 @@ The value of inductance can be calculated with the following formula:
 \end{equation}
 The value of capacitance can be calculated with the following formula: 
 \begin{equation}
-    Capacitance(C)=2*10^{-7}*\left(\frac{1}{ln\frac{GMD}{GMR_C}}\right)
+    Capacitance(C)=2\pi\epsilon_o \left(\frac{1}{ln\frac{GMD}{GMR_C}}\right)
     \label{C}
 \end{equation}
 From equation \ref{L} and \ref{C}:
 \begin{align*}
     L&=2*10^{-7}*ln\left(\frac{6.370}{0.3058}\right)=6.072*10^{-7}H/phase\ m=6.072*10^{-4}H/phase\ Km\\
-    C&=2*10^{-7}*\left(\frac{1}{ln\frac{6.370}{0.3467}}\right)=6.870*10^{-8}F/phase\ m=6.870*10^{-5}F/phase \ km
+    C&=2\pi \epsilon_o*\left(\frac{1}{ln\frac{6.370}{0.3467}}\right)=1.910*10^{-11}F/phase\ m=1.910*10^{-8}F/phase \ km
 \end{align*}
+The total inductance and capacitance is therefore:
+\begin{itemize}
+    \item $L_{total}=L*110=0.066792H/phase$
+    \item $C_{total}=C*110=2.101*10^{-6}F/phase$
+\end{itemize}
+\section{Voltage Regulation}
+\subsection{Calculation Of ABCD parameters}
+The sending end voltage and current can be related to the receiving end voltage and current as:
+{\renewcommand{\arraystretch}{1.3} % Cell height scalings
+\begin{equation}
+    \begin{bmatrix}
+        V_S\\
+        I_S
+    \end{bmatrix}
+    =\begin{bmatrix}
+        A&B\\
+        C&D
+    \end{bmatrix}
+    \begin{bmatrix}
+        V_R\\
+        I_R
+    \end{bmatrix}
+    \label{vsequn}
+\end{equation}
+where,
+\begin{equation*}
+    \begin{bmatrix}
+        A&B\\
+        C&D
+    \end{bmatrix}=
+    \begin{bmatrix}
+        1+\frac{YZ}{2}&Z\\
+        Y\left(1+\frac{YZ}{4}\right)&1+\frac{YZ}{2}
+    \end{bmatrix}
+\end{equation*}
+}\\[0.2cm]
+The equivalent $\pi$ model of a transmission line as shown below:
+\begin{figure}[!hb]
+    \centering
+    \includegraphics[width=1\textwidth]{Figures/figure3.jpg}
+    \caption{$\pi$ model of a transmission line}
+\end{figure}\\
+We know,
+\begin{align}
+Z &= R_{65}+jX_L \label{eq:impedance} \\
+  &= R_{65}+j(2\pi f L_{total}) \notag \\
+  &= 11.56518 + j(2\pi\cdot 50 \cdot 0.066792) \notag \\
+  &= 11.565 + 20.983j =23.959\angle 61.13^\circ \notag \\[6pt]
+Y &= j\omega C_{total} \label{eq:admittance} \\
+  &= j 2\pi f C_{total} \notag \\
+  &= 2\pi \cdot 50 \cdot 2.101 \times 10^{-6} j \notag \\
+  &= 6.600 \times 10^{-4} j\ \Omega^{-1} \notag
+\end{align}
+
+For the $\pi$ model circuit:
+\begin{align*}
+    A&=D=1+\dfrac{ZY}{2}=1+\dfrac{(11.565+20.983j)(6.600*10^{-4}j)}{2}=0.9930\angle 0.220^\circ\\
+    C&=Y\left(1+\frac{YZ}{4}\right)=6.600*10^{-4}\left(1+\dfrac{(11.565+20.983j)(6.600*10^{-4}j)}{4}\right)\\
+    &=6.5771*10^{-4}\angle 90.10^\circ
+\end{align*}
+From equation \ref{vsequn}:
+\begin{align*}
+V_S &= A V_R + B I_R=(0.9930\angle 0.220^\circ) V_R+(23.959\angle 61.13^\circ)I_R\\
+I_S &= C V_R + D I_R =(6.5771*10^{-4}\angle 90.10^\circ)V_R+(0.9930\angle 0.220^\circ)I_R\\
+V_{R(FL)}&=\dfrac{132}{\sqrt{3}}\angle 0^\circ=76.210\angle 0^\circ \ KV\\
+I_R&=323.1\angle -cos^{-1}(0.9)=323.1\angle(-25.84^\circ)\ A
+\end{align*}
+The full load Source Voltage from equation \ref{vsequn} is given by:
+\begin{align*}
+V_{S(FL)}&=(0.9930\angle 0.220^\circ)*(76.210\angle 0^\circ)+(23.959\angle 61.13^\circ)*323.1\angle(-25.84^\circ)\ \\
+&=82.132\angle 3.324^\circ
+\end{align*}
+The negative sign in the current denotes that the line is operating at a lagging power factor.\\
+At no load $I_R=0$:
+\begin{align*}
+    V_{R(NL)}&=\frac{V_{S(FL)}}{A}\\
+    &=\frac{82.132\angle 3.324^\circ}{(0.9930\angle 0.220^\circ)}\\
+    &=82.71\angle3.104\ KV
+\end{align*}
+The voltage regulation of the conductor is given by: 
+\begin{align}
+    \textit{Voltage Regulation}(V_R)&=\dfrac{|V_{R(NL)}|-|V_{R(FL)}|}{|V_{R(FL)}|}\times 100\%\\
+    &=\dfrac{82.71-76.21}{76.21}\times 100\%\notag\\
+    &=8.52 \%\notag
+\end{align}
+Since the voltage regulation is less than 12\% and efficiency is greater than 94\% both the transmission efficiency and voltage regulation criteria is satisfied.
+
 \end{document}
